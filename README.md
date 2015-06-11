@@ -25,4 +25,6 @@ array([[1, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 0, 8, 0, 0, 0, 0]])       
 ```
 
+![Image of solution](chessboard_solution_image.png)
+
 (it only takes a couple of seconds to run the code itself!)
