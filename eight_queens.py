@@ -50,6 +50,7 @@ def queen_threatened_squares(x, y, board=chess_board):
 
     return threatened
 
+
 def multiple_queens_threatened_squares(queen_positions):
     """
     Takes all queen positions and returns all threatened squares.
@@ -72,3 +73,18 @@ def multiple_queens_threatened_squares(queen_positions):
     return threatened.astype(np.bool)
 
 
+def is_board_legal(queen_positions):
+    """ 
+    Checks if any of the queens threaten each other
+
+    """
+
+    threatened_squares = multiple_queens_threatened_squares(queen_positions)
+
+    threatened_queens = (queen_positions.astype(np.bool) &
+                         threatened_squares.astype(np.bool))
+
+    if threatened_queens.any():
+        return False
+    else:
+        return True

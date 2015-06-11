@@ -63,3 +63,44 @@ def test_multiple_queens_threatened_squares():
     assert_equal(threatened, expected_threatened)
 
 
+def test_is_board_legal():
+
+    queen_positions_1 = np.array([
+        [0, 0, 2, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 1, 0, 0]])
+
+    assert is_board_legal(queen_positions_1)
+
+    queen_positions_2 = np.array([
+        [0, 0, 2, 0],
+        [0, 0, 0, 3],
+        [0, 0, 0, 0],
+        [0, 1, 0, 0]])
+
+    assert ~is_board_legal(queen_positions_2)
+
+    queen_positions_3 = np.array([
+        [0, 0, 2, 0],
+        [4, 0, 0, 0],
+        [0, 0, 0, 3],
+        [0, 1, 0, 0]])
+
+    assert is_board_legal(queen_positions_3)
+
+    queen_positions_4 = np.array([
+        [0, 0, 2, 0, 0],
+        [3, 0, 0, 0, 0],
+        [0, 0, 0, 4, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 5]])
+
+    assert is_board_legal(queen_positions_4)
+
+    queen_positions_5 = np.array([
+        [1,0],
+        [2,3]])
+
+    assert ~is_board_legal(queen_positions_5)
+
