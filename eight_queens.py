@@ -125,7 +125,10 @@ def eight_queen_solver(input_board=None, size=8):
 
         result = eight_queen_solver(input_board=board_with_new_queen, size=size)
 
-        if (result is not False) and (result is not None):
+        if result is not False:
             return result
         else:
             print "Queen #{2} at ({0}, {1}) was a dead-end".format(x, y, queen_number)
+
+    # exit this call with a False and let the next one proceed
+    return False
