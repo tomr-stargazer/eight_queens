@@ -14,7 +14,7 @@ chess_board = np.zeros((8,8))
 
 def rook_threatened_squares(x, y, board=chess_board):
     """
-    Takes an x,y position and returns the threatened squares as True.
+    Takes a rook x,y position and returns the threatened squares as True.
 
     """
 
@@ -26,3 +26,26 @@ def rook_threatened_squares(x, y, board=chess_board):
 
     return threatened
 
+def queen_threatened_squares(x, y, board=chess_board):
+    """
+    Takes a queen x,y position and returns the threatened squares as True.
+
+    """
+
+    x_indices, y_indices = np.indices(board.shape)
+
+    # threatened squares are where either 
+    #   x is equal, or
+    #   y is equal, or
+    #   x+y is equal, or
+    #   x-y is equal, 
+    # AND:
+    #   NOT x=x and y=y (because that's the square you're on)
+    threatened = (((x_indices == x) | 
+                   (y_indices == y) |
+                   (x_indices+y_indices == x+y) |
+                   (x_indices-y_indices == x-y)
+                   ) & 
+                 ~((x_indices == x) & (y_indices == y)))
+
+    return threatened
