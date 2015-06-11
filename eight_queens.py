@@ -118,7 +118,7 @@ def eight_queen_solver(input_board=None, size=8):
 
         queen_number = int(np.max(input_board)+1)
 
-        print "Placing queen #{2} at {0}, {1}".format(x, y, queen_number)
+        print "Placing queen #{2} at ({0}, {1})".format(x, y, queen_number)
 
         board_with_new_queen = np.copy(input_board)
         board_with_new_queen[x, y] = queen_number
@@ -130,7 +130,7 @@ def eight_queen_solver(input_board=None, size=8):
         if (result is not False) and (result is not None):
             return result
         else:
-            print "Queen #{2} at {0}, {1} was a dead-end".format(x, y, queen_number)
+            print "Queen #{2} at ({0}, {1}) was a dead-end".format(x, y, queen_number)
             # return False
         # else:
         #     raise ValueError("Failed to find a solution for size={0}".format(size))
