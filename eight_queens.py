@@ -49,3 +49,26 @@ def queen_threatened_squares(x, y, board=chess_board):
                  ~((x_indices == x) & (y_indices == y)))
 
     return threatened
+
+def multiple_queens_threatened_squares(queen_positions):
+    """
+    Takes all queen positions and returns all threatened squares.
+
+    Parameters
+    ----------
+    queen_positions : 2-d array
+      Nonzero where a queen is
+
+    """
+
+    threatened = np.zeros_like(queen_positions)
+
+    x_positions, y_positions = np.where(queen_positions != 0)
+
+    for x, y in zip(x_positions, y_positions):
+
+        threatened += queen_threatened_squares(x, y, board=queen_positions)
+
+    return threatened.astype(np.bool)
+
+
